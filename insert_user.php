@@ -5,22 +5,24 @@ require_once('db_config.php');
 // Check if the request is a POST request
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Collect user input
+    $user_id_ = $_POST['user_id_'];
     $nome = $_POST['nome'];
-    $curso = $_POST['curso'];
-    $cor = $_POST['cor'];
-    $comida = $_POST['comida'];
+    $email = $_POST['email'];
+    $data_admissao = $_POST['data_admissao'];
+    $data_insercao = $_POST['data_insercao'];
+    $data_atualizacao = $_POST['data_atualizacao'];
 
     // Prepare and execute the SQL query
-    $query = "INSERT INTO users (nome, curso, cor, comida) VALUES (?, ?, ?, ?)";
+    $query = "INSERT INTO users (user_id_, nome, email, data_admissao, data_insercao, data_atualizacao) VALUES (?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($query);
-    $stmt->bind_param("ssss", $nome, $curso, $cor, $comida);
+    $stmt->bind_param("ssssss", $user_id_, $nome, $email, $data_admissao, $data_insercao, $data_atualizacao);
 
     $response = [];
 
     if ($stmt->execute()) {
         $response['success'] = true;
         $response['message'] = 'User inserted successfully.';
-        $response['user'] = ['nome' => $nome, 'curso' => $curso, 'cor' => $cor, 'comida' => $comida];
+        $response['user'] = ['user_id_' => $user_id_, 'nome' => $nome, 'email' => $email, 'data_admissao' => $data_admissao, 'data_insercao' => $data_insercao, 'data_atualizacao' => $data_atualizacao];
     } else {
         $response['success'] = false;
         $response['message'] = 'Error inserting user: ' . $stmt->error;
@@ -45,4 +47,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     echo json_encode($response);
     exit();
 }
-?>

@@ -1,3 +1,6 @@
+
+
+
 <!doctype html>
 <html lang="pt-br">
 
@@ -28,25 +31,36 @@
     <form action="insert_user.php" id="myForm" method="post">
 
       <div class="mb-3">
+        <label for="user_id_" class="form-label">id</label>
+        <input type="text" class="form-control" name="user_id_">
+
+      </div>
+      <div class="mb-3">
         <label for="nome" class="form-label">nome</label>
         <input type="text" class="form-control" name="nome">
 
       </div>
       <div class="mb-3">
-        <label for="curso" class="form-label">curso</label>
-        <input type="text" class="form-control" name="curso">
+        <label for="email" class="form-label">email</label>
+        <input type="text" class="form-control" name="email">
 
       </div>
       <div class="mb-3">
-        <label for="cor" class="form-label">cor</label>
-        <input type="text" class="form-control" name="cor">
+        <label for="data_admissao" class="form-label">data-admissao</label>
+        <input type="datetime-local" class="form-control" name="data_admissao">
 
       </div>
       <div class="mb-3">
-        <label for="comida" class="form-label">comida</label>
-        <input type="text" class="form-control" name="comida">
+        <label for="data_insercao" class="form-label">data-insercao</label>
+        <input type="datetime-local" class="form-control" name="data_insercao">
 
       </div>
+      <div class="mb-3">
+        <label for="data_atualizacao" class="form-label">data-atualizacao</label>
+        <input type="datetime-local" class="form-control" name="data_atualizacao">
+
+      </div>
+    
 
       <button type="submit" id="submitButton" onclick="" value="Insert User" class="btn btn-primary">Inserir</button>
 
@@ -55,7 +69,7 @@
 
     <h2 class="mt-4">Usuários</h2>
 
-    <div id="result"></div>
+    <ul id="result"></ul>
 
   </div>
   </div>
@@ -83,7 +97,10 @@
           // Iterate over the users and create list items
           data.users.forEach(user => {
             const listItem = document.createElement('li');
-            listItem.textContent = `Nome: ${user.nome}, Curso: ${user.curso}, Cor: ${user.cor}, Comida: ${user.comida}`;
+            listItem.textContent = `Id: ${user.user_id_}, Nome: ${user.nome}, Email: ${user.email}, data_admissao: ${user.data_admissao}, data_insercao : ${user.data_insercao}, data_atualizacao  : ${user.data_atualizacao}`;
+           
+       
+
             userList.appendChild(listItem);
           });
         })

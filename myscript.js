@@ -12,13 +12,15 @@ $(document).ready(function () {
     const formData = myForm.serialize();
 
     // Get input values
+    var user_id_ = $('input[name="user_id_"]').val();
     var nome = $('input[name="nome"]').val();
-    var curso = $('input[name="curso"]').val();
-    var cor = $('input[name="cor"]').val();
-    var comida = $('input[name="comida"]').val();
+    var email = $('input[name="email"]').val();
+    var data_admissao = $('input[name="data_admissao"]').val();
+    var data_insercao = $('input[name="data_insercao"]').val();
+    var data_atualizacao = $('input[name="data_atualizacao"]').val();
 
     // Check if any input is blank
-    if (!nome || !curso || !cor || !comida) {
+    if (!user_id_ || !nome || !email || !data_admissao || !data_insercao || !data_atualizacao)  {
       // Use SweetAlert for a better user experience
       Swal.fire({
         title: "Erro",
