@@ -7,7 +7,7 @@ error_reporting(E_ALL);
 
 $servername = "mysql25-farm10.kinghost.net";
 $username = "sagapc";
-$password = "naru333"; // Using getenv function
+$password = "password"; // Using getenv function
 $dbname = "sagapc";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
